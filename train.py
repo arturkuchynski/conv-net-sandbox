@@ -11,7 +11,7 @@ from tensorflow.keras.callbacks import TensorBoard, ModelCheckpoint, ReduceLROnP
 from tensorflow.keras.optimizers import Adam
 from tensorflow.python.keras.preprocessing.image import ImageDataGenerator
 
-from .models import build_simple_conv_net
+from models import build_simple_conv_net
 
 BASE_DIR = Path(__file__).resolve().parent
 LOGS_DIR = BASE_DIR.joinpath('logs', f'{datetime.now().strftime("%m-%d-%Y_%H:%M:%S")}')
@@ -31,15 +31,11 @@ def parse_args():
     parser.add_argument('--model_input_size', required=False, default=DEFAULT_MODEL_INPUT_SIZE,
                         help="Model image input size")
     parser.add_argument('--val_split', type=float, required=False, default=0.1, help="Train/val split")
-    parser.add_argument('--classes_path', required=True, help='Path to class file')
-    parser.add_argument('--batch_size', type=int, required=False, default=128,
-                        help="Data batch size")
-    parser.add_argument('--learning_rate', type=float, required=False, default=0.001,
-                        help="Learning rate")
+    parser.add_argument('--batch_size', type=int, required=False, default=128, help="Data batch size")
+    parser.add_argument('--learning_rate', type=float, required=False, default=0.001, help="Learning rate")
     parser.add_argument('--init_epoch', type=int, required=False, default=0,
                         help="Initial training epochs for fine-tune")
-    parser.add_argument('--total_epochs', type=int, required=False, default=30,
-                        help="Total training epochs")
+    parser.add_argument('--total_epochs', type=int, required=False, default=30, help="Total training epochs")
 
     return parser.parse_args()
 
