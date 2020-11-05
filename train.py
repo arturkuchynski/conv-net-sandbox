@@ -47,8 +47,7 @@ def main(args):
                                  monitor='val_loss',
                                  verbose=1,
                                  save_weights_only=True,
-                                 save_best_only=True,
-                                 period=1)
+                                 save_best_only=True)
     logging = TensorBoard(log_dir=str(LOGS_DIR))
     reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=25, verbose=1, cooldown=0, min_lr=1e-7)
     early_stopping = EarlyStopping(monitor='val_loss', min_delta=0, patience=300, verbose=1)
